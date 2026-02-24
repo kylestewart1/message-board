@@ -9,6 +9,7 @@ newMessageRouter.get("/", (req, res) => {
 newMessageRouter.post("/", (req, res) => {
   const { messageUser, messageText } = req.body;
   messages.push({ 
+    id: messages.length() + 1,
     text: messageText,
     user: messageUser,
     added: new Date()
