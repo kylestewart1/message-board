@@ -1,0 +1,19 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bored Message</title>
+</head>
+<body>
+  <h3>Messages</h3>
+  <ul>
+    <% messages.forEach(message => { %>
+      <li>
+        <p><%= message.text %></p>
+        <em><%= message.user %></em>
+        <p><%= message.added %></p>
+      </li>
+    <% }); %>
+  </ul>
+</body>
+</html>
