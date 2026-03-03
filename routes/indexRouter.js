@@ -1,37 +1,15 @@
 import { Router, text } from "express";
+import * as indexController from "../controllers/indexController.js";
+import * as newMessageController from "../controllers/newMessageController.js";
 
-
-const messages = [
-  {
-    id: 1,
-    text: "sup dawg",
-    user: "Brometheus",
-    added: new Date()
-  },
-  {
-    id: 2,
-    text: "We've been trying to reach you about your car's extended warranty.",
-    user: "Guy Manderson",
-    added: new Date()
-  },
-  {
-    id: 3,
-    text: "ay gurl wyd",
-    user: "Himothy",
-    added: new Date()
-  }
-];
 
 const indexRouter = Router();
 
-indexRouter.get("/", (req, res) => {
-  res.render("index", { messages: messages });
-})
+indexRouter.get("/", indexController.getAllMessages);
 
-indexRouter.get("/:messageId", (req, res) => {
-  const { messageId } = req.params;
-  const message = messages.find(message => message.id === Number(messageId));
-  res.render("messageDetails", { message: message });
-})
+indexRouter.get("/new", newMessageController.newMessageGet);
+indexRouter.post("/new", newMessageController.newMessagePost);
 
-export { indexRouter, messages };
+indexRouter.get("/messages/:messageId", indexController.getMessageById);
+
+export { indexRouter };
