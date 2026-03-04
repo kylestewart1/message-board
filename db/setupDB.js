@@ -18,7 +18,7 @@ VALUES
 async function main() {
   console.log("Setting up database.");
   const client = new Client({
-    connectionString: process.env.DATABASE_PUBLIC_URL,
+    connectionString: process.env.DB_CONNECTION_STRING,
   });
   await client.connect();
   await client.query(createMessagesTableSQL);
